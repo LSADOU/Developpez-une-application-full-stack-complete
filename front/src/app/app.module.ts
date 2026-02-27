@@ -9,9 +9,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { ArticleTileComponent } from './components/article-tile/article-tile.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, ArticleTileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
