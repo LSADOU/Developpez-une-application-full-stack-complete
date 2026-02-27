@@ -1,8 +1,23 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Comment } from '../interfaces/comment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Comment {
+export class CommentService {
   
+  private apiUrl: string = environment.apiUrl;
+
+  constructor(private http: HttpClient){}
+
+  getByArticle(articleId: number): Observable<Comment[]>{
+    return this.http.get<Comment[]>(this.apiUrl+'api/articles/'+articleId+'/comments');
+  }
+
+  create(articleId: number, content: string): Observable<Comment>{
+    return this.http.post<Comment>(this.apiUrl+'api/articles/'+articleId+'/comments',{content});
+  }
 }
