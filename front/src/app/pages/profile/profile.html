@@ -1,1 +1,9 @@
-<p>profile works!</p>
+<h1>Page personnelle</h1><button (click)="logout()">Se déconnecter</button>
+<input type="text" placeholder="Nom d'utilisateur" [(ngModel)]="username">
+<input type="email" placeholder="Email" [(ngModel)]="email">
+<input type="password" placeholder="Mot de passe" [(ngModel)]="password">
+<p>Utilisateur créé le: {{ createdAt }} - Dernière modification le : {{ updatedAt }}</p>
+<button (click)="onUpdateProfile()">modifier</button>
+
+<h1>Liste des thèmes souscrits</h1>
+<app-theme-tile *ngFor="let theme of subscribedThemes" [theme]="theme" [isUserSubscribed]="true"></app-theme-tile>
