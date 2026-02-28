@@ -18,9 +18,10 @@ import { ArticleDetail } from './pages/article-detail/article-detail';
 import { ArticleCreate } from './pages/article-create/article-create';
 import { ThemesList } from './pages/themes-list/themes-list';
 import { Profile } from './pages/profile/profile';
+import { ThemeTileComponent } from './components/theme-tile/theme-tile.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ArticleTileComponent, CommentTileComponent, Login, Register, ArticlesList, ArticleDetail, ArticleCreate, ThemesList, Profile],
+  declarations: [AppComponent, HomeComponent, ArticleTileComponent, CommentTileComponent, Login, Register, ArticlesList, ArticleDetail, ArticleCreate, ThemesList, Profile, ThemeTileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
