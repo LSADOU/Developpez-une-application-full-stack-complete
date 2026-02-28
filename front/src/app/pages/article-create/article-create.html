@@ -1,1 +1,7 @@
-<p>article-create works!</p>
+<h1>Create an article</h1>
+<input type="text" placeholder="Titre" [(ngModel)]="title">
+<select [(ngModel)]="themeId">
+  <option *ngFor="let theme of availableThemes" [value]="theme.id">{{ theme.title }}</option>
+</select>
+<textarea placeholder="Contenu de l'article" [(ngModel)]="content"></textarea>
+<button (click)="onCreateArticle()">Créer l'article</button>
