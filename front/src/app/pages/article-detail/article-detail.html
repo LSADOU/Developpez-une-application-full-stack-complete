@@ -1,1 +1,8 @@
-<p>article-detail works!</p>
+<h1>{{ article.title }}</h1>
+<h2>{{ article.authorName }} - {{ article.themeName }} - {{ article.createdAt }}</h2>
+<p>{{ article.content }}</p>
+
+<app-comment-tile *ngFor="let comment of comments" [comment]="comment"></app-comment-tile>
+
+<input type="text" placeholder="Ajouter un commentaire" [(ngModel)]="newComment">
+<button (click)="onComment()">Commenter</button>

@@ -10,9 +10,17 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ArticleTileComponent } from './components/article-tile/article-tile.component';
+import { CommentTileComponent } from './components/comment-tile/comment-tile.component';
+import { Login } from './pages/login/login';
+import { Register } from './pages/register/register';
+import { ArticlesList } from './pages/articles-list/articles-list';
+import { ArticleDetail } from './pages/article-detail/article-detail';
+import { ArticleCreate } from './pages/article-create/article-create';
+import { ThemesList } from './pages/themes-list/themes-list';
+import { Profile } from './pages/profile/profile';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ArticleTileComponent],
+  declarations: [AppComponent, HomeComponent, ArticleTileComponent, CommentTileComponent, Login, Register, ArticlesList, ArticleDetail, ArticleCreate, ThemesList, Profile],
   imports: [
     BrowserModule,
     AppRoutingModule,
