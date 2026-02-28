@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth';
 
 @Component({
   selector: 'app-header',
-  imports: [],
   templateUrl: './header.html',
-  styleUrl: './header.scss',
+  styleUrls: ['./header.scss'],
 })
 export class Header {
 
+  constructor(private authService: AuthService){}
+
+  get isAuthenticated(): boolean{
+    return this.authService.isAuthenticated();
+  }
 }

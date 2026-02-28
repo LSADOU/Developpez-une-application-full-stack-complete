@@ -20,7 +20,7 @@ export class Profile implements OnInit{
   updatedAt: string = "";
   subscribedThemes: Theme[] = [];
 
-  constructor(private authService: AuthService, private susbscriptionService: SubscriptionService, private router: Router){}
+  constructor(private authService: AuthService, private subscriptionService: SubscriptionService, private router: Router){}
 
   ngOnInit(){
     this.authService.me().subscribe(
@@ -36,7 +36,7 @@ export class Profile implements OnInit{
         }
       }
     )
-    this.susbscriptionService.getMySubscriptions().subscribe(
+    this.subscriptionService.getMySubscriptions().subscribe(
       {
         next: (response: Theme[]) => {
           this.subscribedThemes = response;
