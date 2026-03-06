@@ -1,5 +1,5 @@
 <h2>{{ theme.title }}</h2>
 <p>{{ theme.description }}</p>
 <button *ngIf="!isUserSubscribed" (click)="manageSubscription()">S'abonner</button>
-<button *ngIf="isUserSubscribed && CanUserUnsubscribe" (click)="manageSubscription()">Se désabonner</button>
-<button *ngIf="isUserSubscribed && !CanUserUnsubscribe" disabled>Déjà abonné</button>
+<button *ngIf="isUserSubscribed && canUserUnsubscribe" (click)="manageSubscription()">Se désabonner</button>
+<button *ngIf="isUserSubscribed && !canUserUnsubscribe" disabled>Déjà abonné</button>
