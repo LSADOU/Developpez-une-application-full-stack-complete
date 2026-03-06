@@ -28,7 +28,7 @@ export class ArticlesList implements OnInit{
       }
     );
   }
-
   
+  onSortList(){}
 
 }
