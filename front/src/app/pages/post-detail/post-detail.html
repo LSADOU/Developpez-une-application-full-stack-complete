@@ -5,5 +5,5 @@
 
 <app-comment-tile *ngFor="let comment of comments" [comment]="comment"></app-comment-tile>
 
-<input type="text" placeholder="Ajouter un commentaire" [(ngModel)]="newComment">
-<button (click)="onComment()">Commenter</button>
+<input matInput [formControl]="newComment" placeholder="Ajouter un commentaire">
+<button mat-raised-button (click)="onComment()" [disabled]="newComment.invalid">Commenter</button>

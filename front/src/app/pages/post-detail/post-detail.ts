@@ -5,6 +5,7 @@ import { Post } from 'src/app/interfaces/post';
 import { Comment } from 'src/app/interfaces/comment';
 import { PostService } from 'src/app/services/post';
 import { CommentService } from 'src/app/services/comment';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class PostDetail implements OnInit{
 
   post!: Post;
   comments!: Comment[];
-  newComment: string = "";
+  newComment =  new FormControl('', Validators.required);
 
   constructor(private postService: PostService, private commentService: CommentService, private activatedRoute : ActivatedRoute){}
 
@@ -46,11 +47,11 @@ export class PostDetail implements OnInit{
 
   onComment(){
     const postId = Number(this.activatedRoute.snapshot.params['id']);
-    this.commentService.create(postId,this.newComment).subscribe(
+    this.commentService.create(postId,this.newComment.value!).subscribe(
       {
         next: (response: Comment) => {
           this.comments.push(response);
-          this.newComment = "";
+          this.newComment.reset();
         },
         error: (err: HttpErrorResponse) => {
           console.error(err.error.message)
