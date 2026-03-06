@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +19,15 @@ import { TopicsList } from './pages/topics-list/topics-list';
 import { Profile } from './pages/profile/profile';
 import { TopicTileComponent } from './components/topic-tile/topic-tile.component';
 import { Header } from './components/header/header';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, PostTileComponent, CommentTileComponent, Login, Register, Feed, PostDetail, PostCreate, TopicsList, Profile, TopicTileComponent, Header],
@@ -27,9 +35,16 @@ import { Header } from './components/header/header';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent],

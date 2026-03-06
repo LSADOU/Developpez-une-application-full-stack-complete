@@ -2,6 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { passwordValidator } from 'src/app/validators/password.validator';
 
 @Component({
   selector: 'app-register',
@@ -10,22 +12,23 @@ import { AuthService } from 'src/app/services/auth';
 })
 export class Register {
 
-  username: string = "";
-  email: string = "";
-  password: string = "";
-  errorMsg: string = "";
+  registerForm = new FormGroup({
+    username: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, passwordValidator])
+  })
 
   constructor(private authService: AuthService, private router: Router){}
 
   onRegister(){
-    this.authService.register(this.email, this.password, this.username).subscribe(
+    this.authService.register(this.registerForm.value.email!, this.registerForm.value.password!, this.registerForm.value.username!).subscribe(
       {
         next: (response: {token: string}) => {
           localStorage.setItem('token',response.token);
           this.router.navigate(['/posts']);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMsg = err.error.message;
+          console.error(err.error.message);
         }
       }
     )

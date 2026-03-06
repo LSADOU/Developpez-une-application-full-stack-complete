@@ -1,8 +1,21 @@
-<div>
-  <h1>Register</h1>
-  <input type="email" placeholder="Email" [(ngModel)]="email">
-  <input type="text" placeholder="Nom d'utilisateur" [(ngModel)]="username">
-  <input type="password" placeholder="Mot de passe" [(ngModel)]="password">
-  <button (click)="onRegister()">S'enregistrer</button>
-  <p *ngIf="errorMsg">{{ errorMsg }}</p>
-</div>
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+  <mat-form-field appearance="outline">
+    <mat-label>Nom d'utilisateur</mat-label><input matInput formControlName="username">
+    <mat-error *ngIf="registerForm.get('username')?.hasError('required')">Champs requis</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label><input matInput formControlName="email">
+    <mat-error *ngIf="registerForm.get('email')?.hasError('required')">Champs requis</mat-error>
+    <mat-error *ngIf="registerForm.get('email')?.hasError('email')">Adresse email invalide</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Mot de passe</mat-label><input matInput formControlName="password">
+    <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Champs requis</mat-error>
+    <mat-error *ngIf="registerForm.get('password')?.hasError('tooShort')">mot de passe trop court, 8 caractères minimum</mat-error>
+    <mat-error *ngIf="registerForm.get('password')?.hasError('missingUpper')">mot de passe invalide car majuscule manquante</mat-error>
+    <mat-error *ngIf="registerForm.get('password')?.hasError('missingLower')">mot de passe invalide car minuscule manquante</mat-error>
+    <mat-error *ngIf="registerForm.get('password')?.hasError('missingNumber')">mot de passe invalide car chiffre manquant</mat-error>
+    <mat-error *ngIf="registerForm.get('password')?.hasError('missingSpecial')">mot de passe invalide car caractère spécial manquant</mat-error>
+  </mat-form-field>
+  <button mat-raised-button type="submit" [disabled]="registerForm.invalid">Envoyer</button>
+</form>
