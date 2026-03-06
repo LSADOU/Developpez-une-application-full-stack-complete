@@ -13,6 +13,8 @@ export class ThemeTileComponent{
   theme!: Theme;
   @Input()
   isUserSubscribed!: boolean;
+  @Input()
+  CanUserUnsubscribe!: boolean;
 
   constructor(private subscriptionService: SubscriptionService){}
 
