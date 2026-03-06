@@ -1,7 +1,20 @@
 <h1>Créer un article</h1>
-<input type="text" placeholder="Titre" [(ngModel)]="title">
-<select [(ngModel)]="topicId">
-  <option *ngFor="let topic of availableTopics" [value]="topic.id">{{ topic.title }}</option>
-</select>
-<textarea placeholder="Contenu de l'article" [(ngModel)]="content"></textarea>
-<button (click)="onCreatePost()">Créer l'article</button>
+
+<form [formGroup]="postForm" (ngSubmit)="onCreatePost()">
+  <mat-form-field appearance="outline">
+    <mat-label>Titre de l'article</mat-label><input matInput formControlName="title">
+    <mat-error *ngIf="postForm.get('title')?.hasError('required')">Champs requis</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Thème</mat-label>
+    <mat-select formControlName="topicId">
+      <mat-option *ngFor="let topic of availableTopics" [value]="topic.id">{{ topic.title }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="postForm.get('topicId')?.hasError('required')">Champs requis</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Contenu</mat-label><textarea matInput formControlName="content"></textarea>
+    <mat-error *ngIf="postForm.get('content')?.hasError('required')">Champs requis</mat-error>
+  </mat-form-field>
+  <button mat-raised-button type="submit" [disabled]="postForm.invalid">Créer l'article</button>
+</form>

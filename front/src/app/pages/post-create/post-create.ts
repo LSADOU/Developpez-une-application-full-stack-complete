@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/interfaces/post';
 import { Topic } from 'src/app/interfaces/topic';
@@ -13,9 +14,11 @@ import { TopicService } from 'src/app/services/topic';
 })
 
 export class PostCreate implements OnInit{
-  title: string = "";
-  content: string = "";
-  topicId: number = -1;
+  postForm = new FormGroup({
+    title: new FormControl('', Validators.required),
+    topicId: new FormControl(-1, [Validators.required, Validators.min(1)]),
+    content: new FormControl('', [Validators.required])
+  })
   availableTopics: Topic[] = []
 
   constructor(private postService: PostService, private topicService: TopicService, private router: Router){}
@@ -34,7 +37,7 @@ export class PostCreate implements OnInit{
   }
 
   onCreatePost(){
-    this.postService.create(this.topicId,this.title,this.content).subscribe(
+    this.postService.create(this.postForm.value.topicId!,this.postForm.value.title!,this.postForm.value.content!).subscribe(
       {
         next:(response: Post) => {
           this.router.navigate(['/posts'])
