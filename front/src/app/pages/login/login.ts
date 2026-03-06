@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth';
+import { passwordValidator } from 'src/app/validators/password.validator';
 
 @Component({
   selector: 'app-login',
@@ -10,21 +12,22 @@ import { AuthService } from 'src/app/services/auth';
 })
 export class Login {
 
-  identifier: string = "";
-  password: string = "";
-  errorMsg: string = "";
+  loginForm = new FormGroup({
+    identifier: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required])
+  })
 
   constructor(private authService: AuthService, private router: Router){}
 
   onLogin(){
-    this.authService.login(this.identifier, this.password).subscribe(
+    this.authService.login(this.loginForm.value.identifier!, this.loginForm.value.password!).subscribe(
       {
         next: (response: {token: string}) => {
           localStorage.setItem('token',response.token);
-          this.router.navigate(['/posts'])
+          this.router.navigate(['/posts']);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMsg = err.error.message
+          console.error(err.error.message);
         }
       }
     )
