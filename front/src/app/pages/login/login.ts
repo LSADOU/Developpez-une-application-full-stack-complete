@@ -10,14 +10,14 @@ import { AuthService } from 'src/app/services/auth';
 })
 export class Login {
 
-  email: string = "";
+  identifier: string = "";
   password: string = "";
   errorMsg: string = "";
 
   constructor(private authService: AuthService, private router: Router){}
 
   onLogin(){
-    this.authService.login(this.email, this.password).subscribe(
+    this.authService.login(this.identifier, this.password).subscribe(
       {
         next: (response: {token: string}) => {
           localStorage.setItem('token',response.token);
