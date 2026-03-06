@@ -1,9 +1,24 @@
-<h1>Page personnelle</h1><button (click)="logout()">Se déconnecter</button>
-<input type="text" placeholder="Nom d'utilisateur" [(ngModel)]="username">
-<input type="email" placeholder="Email" [(ngModel)]="email">
-<input type="password" placeholder="Mot de passe" [(ngModel)]="password">
+<h1>Page personnelle</h1>
 <p>Utilisateur créé le: {{ createdAt }} - Dernière modification le : {{ updatedAt }}</p>
-<button (click)="onUpdateProfile()">modifier</button>
+<form [formGroup]="updateForm" (ngSubmit)="onUpdateProfile()">
+  <mat-form-field appearance="outline">
+    <mat-label>Nom d'utilisateur</mat-label><input matInput formControlName="username">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label><input matInput formControlName="email">
+    <mat-error *ngIf="updateForm.get('email')?.hasError('email')">Adresse email invalide</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Mot de passe</mat-label><input matInput formControlName="password">
+    <mat-error *ngIf="updateForm.get('password')?.hasError('tooShort')">mot de passe trop court, 8 caractères minimum</mat-error>
+    <mat-error *ngIf="updateForm.get('password')?.hasError('missingUpper')">mot de passe invalide car majuscule manquante</mat-error>
+    <mat-error *ngIf="updateForm.get('password')?.hasError('missingLower')">mot de passe invalide car minuscule manquante</mat-error>
+    <mat-error *ngIf="updateForm.get('password')?.hasError('missingNumber')">mot de passe invalide car chiffre manquant</mat-error>
+    <mat-error *ngIf="updateForm.get('password')?.hasError('missingSpecial')">mot de passe invalide car caractère spécial manquant</mat-error>
+  </mat-form-field>
+  <button mat-raised-button type="submit" [disabled]=" !isFormChangedAndValid() ">Envoyer</button>
+</form>
+
 
 <h1>Liste des thèmes souscrits</h1>
 <app-topic-tile *ngFor="let topic of subscribedTopics" [topic]="topic" [isUserSubscribed]="true" [canUserUnsubscribe]="true"></app-topic-tile>

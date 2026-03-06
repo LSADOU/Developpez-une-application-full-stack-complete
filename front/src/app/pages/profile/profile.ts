@@ -1,10 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Topic } from 'src/app/interfaces/topic';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth';
 import { SubscriptionService } from 'src/app/services/subscription';
+import { passwordValidator } from 'src/app/validators/password.validator';
 
 @Component({
   selector: 'app-profile',
@@ -13,9 +15,12 @@ import { SubscriptionService } from 'src/app/services/subscription';
 })
 export class Profile implements OnInit{
 
-  username: string = "";
-  email: string = "";
-  password: string = "";
+  updateForm = new FormGroup({
+    username: new FormControl(''),
+    email: new FormControl('',[Validators.email]),
+    password: new FormControl('',[passwordValidator])
+  })
+  initialValues: { email: string, username: string } = { email: '', username: '' };
   createdAt: string = "";
   updatedAt: string = "";
   subscribedTopics: Topic[] = [];
@@ -26,8 +31,8 @@ export class Profile implements OnInit{
     this.authService.me().subscribe(
       {
         next: (response: User) => {
-          this.username = response.username;
-          this.email = response.email;
+          this.updateForm.patchValue({ username: response.username, email: response.email });
+          this.initialValues = { username: response.username, email: response.email };
           this.createdAt = response.createdAt;
           this.updatedAt = response.updatedAt;
         },
@@ -49,12 +54,11 @@ export class Profile implements OnInit{
   }
 
   onUpdateProfile(){
-    this.authService.updateProfile(this.email, this.password, this.username).subscribe(
+    this.authService.updateProfile(this.updateForm.value.email!, this.updateForm.value.password!, this.updateForm.value.username!).subscribe(
       {
         next: (response: User) => {
-          this.username = response.username;
-          this.email = response.email;
-          this.password = "";
+          this.updateForm.patchValue({ username: response.username, email: response.email, password: '' });
+          this.initialValues = { username: response.username, email: response.email};
           this.createdAt = response.createdAt;
           this.updatedAt = response.updatedAt;
         },
@@ -68,5 +72,9 @@ export class Profile implements OnInit{
   logout(){
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  isFormChangedAndValid(): boolean{
+    return ! (this.updateForm.invalid || ((this.updateForm.value.username === this.initialValues.username) && (this.updateForm.value.email === this.initialValues.email) && this.updateForm.value.password==''));
   }
 }
