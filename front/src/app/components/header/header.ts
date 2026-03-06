@@ -13,4 +13,8 @@ export class Header {
   get isAuthenticated(): boolean{
     return this.authService.isAuthenticated();
   }
+
+  toLogout(){
+    this.authService.logout();
+  }
 }

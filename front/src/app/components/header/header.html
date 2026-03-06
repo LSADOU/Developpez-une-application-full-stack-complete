@@ -1,4 +1,4 @@
 <img src="assets/logo_p6.png" alt="description">
 <div *ngIf="isAuthenticated">
-<button routerLink="/articles">Articles</button> <button routerLink="/articles/create">Rédiger un article</button> <button routerLink="/themes">Thèmes</button> <button routerLink="/profile">Page personnelle</button>
+<button (click)="toLogout()">Se déconnecter...</button><button routerLink="/articles">Articles</button><button routerLink="/themes">Thèmes</button> <button routerLink="/profile">Page personnelle</button>
 </div>
