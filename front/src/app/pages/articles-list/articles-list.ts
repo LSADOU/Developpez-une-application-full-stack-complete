@@ -20,7 +20,8 @@ export class ArticlesList implements OnInit{
     this.articleService.getFeed().subscribe(
       {
         next: (response: Article[]) => {
-          this.articles = response
+          //récupère la réponse de la requète et la trie par ordre décroissant
+          this.articles = response.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
         },
         error: (err: HttpErrorResponse) => {
           this.errorMsg = err.error.message
