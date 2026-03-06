@@ -1,16 +1,16 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
-import { Theme } from 'src/app/interfaces/theme';
+import { Topic } from 'src/app/interfaces/topic';
 import { SubscriptionService } from 'src/app/services/subscription';
 
 @Component({
-  selector: 'app-theme-tile',
-  templateUrl: './theme-tile.component.html',
-  styleUrls: ['./theme-tile.component.scss']
+  selector: 'app-topic-tile',
+  templateUrl: './topic-tile.component.html',
+  styleUrls: ['./topic-tile.component.scss']
 })
-export class ThemeTileComponent{
+export class TopicTileComponent{
   @Input()
-  theme!: Theme;
+  topic!: Topic;
   @Input()
   isUserSubscribed!: boolean;
   @Input()
@@ -20,7 +20,7 @@ export class ThemeTileComponent{
 
   manageSubscription(){
     if (!this.isUserSubscribed){
-      this.subscriptionService.subscribe(this.theme.id).subscribe( 
+      this.subscriptionService.subscribe(this.topic.id).subscribe(
         {
           next: (response: {message: string}) => {
             this.isUserSubscribed = !this.isUserSubscribed;
@@ -31,7 +31,7 @@ export class ThemeTileComponent{
         }
       )
     }else{
-      this.subscriptionService.unsubscribe(this.theme.id).subscribe(
+      this.subscriptionService.unsubscribe(this.topic.id).subscribe(
         {
           next: (response: {message: string}) => {
             this.isUserSubscribed = !this.isUserSubscribed;
@@ -43,6 +43,5 @@ export class ThemeTileComponent{
       )
     }
   }
-
 
 }

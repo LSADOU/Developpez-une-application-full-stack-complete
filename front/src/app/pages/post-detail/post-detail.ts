@@ -1,38 +1,38 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Article } from 'src/app/interfaces/article';
+import { Post } from 'src/app/interfaces/post';
 import { Comment } from 'src/app/interfaces/comment';
-import { ArticleService } from 'src/app/services/article';
+import { PostService } from 'src/app/services/post';
 import { CommentService } from 'src/app/services/comment';
 
 
 @Component({
-  selector: 'app-article-detail',
-  templateUrl: './article-detail.html',
-  styleUrls: ['./article-detail.scss'],
+  selector: 'app-post-detail',
+  templateUrl: './post-detail.html',
+  styleUrls: ['./post-detail.scss'],
 })
-export class ArticleDetail implements OnInit{
+export class PostDetail implements OnInit{
 
-  article!: Article;
+  post!: Post;
   comments!: Comment[];
   newComment: string = "";
 
-  constructor(private articleService: ArticleService, private commentService: CommentService, private activatedRoute : ActivatedRoute){}
+  constructor(private postService: PostService, private commentService: CommentService, private activatedRoute : ActivatedRoute){}
 
   ngOnInit(){
-    const articleId = Number(this.activatedRoute.snapshot.params['id']);
-    this.articleService.getById(articleId).subscribe(
+    const postId = Number(this.activatedRoute.snapshot.params['id']);
+    this.postService.getById(postId).subscribe(
       {
-        next: (response: Article) => {
-          this.article = response;
+        next: (response: Post) => {
+          this.post = response;
         },
         error: (err: HttpErrorResponse) => {
           console.error(err.error.message);
         }
       }
     )
-    this.commentService.getByArticle(articleId).subscribe(
+    this.commentService.getByPost(postId).subscribe(
       {
         next: (response: Comment[]) => {
           this.comments = response;
@@ -45,8 +45,8 @@ export class ArticleDetail implements OnInit{
   }
 
   onComment(){
-    const articleId = Number(this.activatedRoute.snapshot.params['id']);
-    this.commentService.create(articleId,this.newComment).subscribe(
+    const postId = Number(this.activatedRoute.snapshot.params['id']);
+    this.commentService.create(postId,this.newComment).subscribe(
       {
         next: (response: Comment) => {
           this.comments.push(response);
@@ -58,6 +58,5 @@ export class ArticleDetail implements OnInit{
       }
     );
   }
-
 
 }

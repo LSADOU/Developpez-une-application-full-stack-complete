@@ -1,10 +1,10 @@
-export interface Article {
+export interface Post {
     id: number;
     title: string;
     content: string;
     authorId: number;
     authorName: string;
-    themeId: number;
-    themeName: string;
+    topicId: number;
+    topicName: string;
     createdAt: string;
 }

@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Theme } from 'src/app/interfaces/theme';
+import { Topic } from 'src/app/interfaces/topic';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth';
 import { SubscriptionService } from 'src/app/services/subscription';
@@ -18,7 +18,7 @@ export class Profile implements OnInit{
   password: string = "";
   createdAt: string = "";
   updatedAt: string = "";
-  subscribedThemes: Theme[] = [];
+  subscribedTopics: Topic[] = [];
 
   constructor(private authService: AuthService, private subscriptionService: SubscriptionService, private router: Router){}
 
@@ -38,8 +38,8 @@ export class Profile implements OnInit{
     )
     this.subscriptionService.getMySubscriptions().subscribe(
       {
-        next: (response: Theme[]) => {
-          this.subscribedThemes = response;
+        next: (response: Topic[]) => {
+          this.subscribedTopics = response;
         },
         error: (err: HttpErrorResponse) => {
           console.error(err.error.message);

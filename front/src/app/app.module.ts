@@ -9,20 +9,20 @@ import { HomeComponent } from './pages/home/home.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
-import { ArticleTileComponent } from './components/article-tile/article-tile.component';
+import { PostTileComponent } from './components/post-tile/post-tile.component';
 import { CommentTileComponent } from './components/comment-tile/comment-tile.component';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
-import { ArticlesList } from './pages/articles-list/articles-list';
-import { ArticleDetail } from './pages/article-detail/article-detail';
-import { ArticleCreate } from './pages/article-create/article-create';
-import { ThemesList } from './pages/themes-list/themes-list';
+import { Feed } from './pages/feed/feed';
+import { PostDetail } from './pages/post-detail/post-detail';
+import { PostCreate } from './pages/post-create/post-create';
+import { TopicsList } from './pages/topics-list/topics-list';
 import { Profile } from './pages/profile/profile';
-import { ThemeTileComponent } from './components/theme-tile/theme-tile.component';
+import { TopicTileComponent } from './components/topic-tile/topic-tile.component';
 import { Header } from './components/header/header';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ArticleTileComponent, CommentTileComponent, Login, Register, ArticlesList, ArticleDetail, ArticleCreate, ThemesList, Profile, ThemeTileComponent, Header],
+  declarations: [AppComponent, HomeComponent, PostTileComponent, CommentTileComponent, Login, Register, Feed, PostDetail, PostCreate, TopicsList, Profile, TopicTileComponent, Header],
   imports: [
     BrowserModule,
     AppRoutingModule,

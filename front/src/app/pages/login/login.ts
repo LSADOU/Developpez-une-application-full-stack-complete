@@ -21,7 +21,7 @@ export class Login {
       {
         next: (response: {token: string}) => {
           localStorage.setItem('token',response.token);
-          this.router.navigate(['/articles'])
+          this.router.navigate(['/posts'])
         },
         error: (err: HttpErrorResponse) => {
           this.errorMsg = err.error.message

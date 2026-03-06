@@ -8,16 +8,16 @@ import { Comment } from '../interfaces/comment';
   providedIn: 'root',
 })
 export class CommentService {
-  
+
   private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient){}
 
-  getByArticle(articleId: number): Observable<Comment[]>{
-    return this.http.get<Comment[]>(this.apiUrl+'api/articles/'+articleId+'/comments');
+  getByPost(postId: number): Observable<Comment[]>{
+    return this.http.get<Comment[]>(this.apiUrl+'api/posts/'+postId+'/comments');
   }
 
-  create(articleId: number, content: string): Observable<Comment>{
-    return this.http.post<Comment>(this.apiUrl+'api/articles/'+articleId+'/comments',{content});
+  create(postId: number, content: string): Observable<Comment>{
+    return this.http.post<Comment>(this.apiUrl+'api/posts/'+postId+'/comments',{content});
   }
 }

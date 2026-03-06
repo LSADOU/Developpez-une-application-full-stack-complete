@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Theme } from '../interfaces/theme';
+import { Topic } from '../interfaces/topic';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ThemeService {
-  
+export class TopicService {
+
   private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient){}
 
-  getAllThemes(): Observable<Theme[]> {
-    return this.http.get<Theme[]>(this.apiUrl+'api/themes')
+  getAllTopics(): Observable<Topic[]> {
+    return this.http.get<Topic[]>(this.apiUrl+'api/topics')
   }
 
 }

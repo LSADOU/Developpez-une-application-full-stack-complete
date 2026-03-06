@@ -6,4 +6,4 @@
 <button (click)="onUpdateProfile()">modifier</button>
 
 <h1>Liste des thèmes souscrits</h1>
-<app-theme-tile *ngFor="let theme of subscribedThemes" [theme]="theme" [isUserSubscribed]="true" [canUserUnsubscribe]="true"></app-theme-tile>
+<app-topic-tile *ngFor="let topic of subscribedTopics" [topic]="topic" [isUserSubscribed]="true" [canUserUnsubscribe]="true"></app-topic-tile>

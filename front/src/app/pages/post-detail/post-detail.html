@@ -1,7 +1,7 @@
 
-<button routerLink="/articles">&larr;</button> <h1>{{ article.title }}</h1>
-<h2>{{ article.authorName }} - {{ article.themeName }} - {{ article.createdAt }}</h2>
-<p>{{ article.content }}</p>
+<button routerLink="/posts">&larr;</button> <h1>{{ post.title }}</h1>
+<h2>{{ post.authorName }} - {{ post.topicName }} - {{ post.createdAt }}</h2>
+<p>{{ post.content }}</p>
 
 <app-comment-tile *ngFor="let comment of comments" [comment]="comment"></app-comment-tile>
 
