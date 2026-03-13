@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Topic } from 'src/app/interfaces/topic';
 import { SubscriptionService } from 'src/app/services/subscription';
 
@@ -15,6 +15,8 @@ export class TopicTileComponent{
   isUserSubscribed!: boolean;
   @Input()
   canUserUnsubscribe!: boolean;
+  @Output()
+  unsuscribeEvent = new EventEmitter<number>();
 
   constructor(private subscriptionService: SubscriptionService){}
 
@@ -35,6 +37,7 @@ export class TopicTileComponent{
         {
           next: (response: {message: string}) => {
             this.isUserSubscribed = !this.isUserSubscribed;
+            this.unsuscribeEvent.emit(this.topic.id);
           },
           error: (err: HttpErrorResponse) => {
             console.error(err.error.message);

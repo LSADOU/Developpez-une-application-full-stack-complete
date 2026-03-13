@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Topic } from 'src/app/interfaces/topic';
@@ -23,8 +23,8 @@ export class Profile implements OnInit{
   initialValues: { email: string, username: string } = { email: '', username: '' };
   createdAt: string = "";
   updatedAt: string = "";
-  subscribedTopics: Topic[] = [];
-
+  subscribedTopics = signal<Topic[]>([]);
+  
   constructor(private authService: AuthService, private subscriptionService: SubscriptionService, private router: Router){}
 
   ngOnInit(){
@@ -44,7 +44,7 @@ export class Profile implements OnInit{
     this.subscriptionService.getMySubscriptions().subscribe(
       {
         next: (response: Topic[]) => {
-          this.subscribedTopics = response;
+          this.subscribedTopics.set(response);
         },
         error: (err: HttpErrorResponse) => {
           console.error(err.error.message);
@@ -76,5 +76,13 @@ export class Profile implements OnInit{
 
   isFormChangedAndValid(): boolean{
     return ! (this.updateForm.invalid || ((this.updateForm.value.username === this.initialValues.username) && (this.updateForm.value.email === this.initialValues.email) && this.updateForm.value.password==''));
+  }
+
+  removeSubscription(topicId: number){
+    this.subscribedTopics.update(currentList => 
+      currentList.filter(
+        t => t.id !== topicId
+      )
+    )
   }
 }

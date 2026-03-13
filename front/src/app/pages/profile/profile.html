@@ -21,4 +21,4 @@
 
 
 <h1>Liste des thèmes souscrits</h1>
-<app-topic-tile *ngFor="let topic of subscribedTopics" [topic]="topic" [isUserSubscribed]="true" [canUserUnsubscribe]="true"></app-topic-tile>
+<app-topic-tile *ngFor="let topic of subscribedTopics()" [topic]="topic" [isUserSubscribed]="true" [canUserUnsubscribe]="true" (unsuscribeEvent)="removeSubscription($event)"></app-topic-tile>
