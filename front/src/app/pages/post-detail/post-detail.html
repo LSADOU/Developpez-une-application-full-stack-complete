@@ -1,10 +1,12 @@
 
 <button routerLink="/posts">&larr;</button>
-<h1>{{ post.title }}</h1>
-<h2>{{ post.authorName }} - {{ post.topicName }} - {{ post.createdAt }}</h2>
-<p>{{ post.content }}</p>
+<ng-container *ngIf="post">
+    <h1>{{ post.title }}</h1>
+    <h2>{{ post.authorName }} - {{ post.topicName }} - {{ post.createdAt }}</h2>
+    <p>{{ post.content }}</p>
 
-<app-comment-tile *ngFor="let comment of comments" [comment]="comment"></app-comment-tile>
+    <app-comment-tile *ngFor="let comment of comments" [comment]="comment"></app-comment-tile>
 
-<input matInput [formControl]="newComment" placeholder="Ajouter un commentaire">
-<button mat-raised-button (click)="onComment()" [disabled]="newComment.invalid">Commenter</button>
+    <input matInput [formControl]="newComment" placeholder="Ajouter un commentaire">
+    <button mat-raised-button (click)="onComment()" [disabled]="newComment.invalid">Commenter</button>
+</ng-container>
