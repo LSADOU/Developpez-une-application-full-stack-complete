@@ -6,7 +6,7 @@
     <mat-error *ngIf="loginForm.get('identifier')?.hasError('required')">Champs requis</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Mot de passe</mat-label><input matInput formControlName="password">
+    <mat-label>Mot de passe</mat-label><input matInput type="password" formControlName="password">
     <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Champs requis</mat-error>
   </mat-form-field>
   <button mat-raised-button type="submit" [disabled]="loginForm.invalid">Se connecter</button>

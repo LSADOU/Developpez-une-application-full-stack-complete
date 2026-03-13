@@ -9,7 +9,7 @@
     <mat-error *ngIf="updateForm.get('email')?.hasError('email')">Adresse email invalide</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Mot de passe</mat-label><input matInput formControlName="password">
+    <mat-label>Mot de passe</mat-label><input matInput type="password" formControlName="password">
     <mat-error *ngIf="updateForm.get('password')?.hasError('tooShort')">mot de passe trop court, 8 caractères minimum</mat-error>
     <mat-error *ngIf="updateForm.get('password')?.hasError('missingUpper')">mot de passe invalide car majuscule manquante</mat-error>
     <mat-error *ngIf="updateForm.get('password')?.hasError('missingLower')">mot de passe invalide car minuscule manquante</mat-error>
