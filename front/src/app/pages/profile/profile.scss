@@ -1,0 +1,49 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+}
+
+.page-title {
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.centered-form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.centered-form mat-form-field {
+  width: 100%;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid #000;
+  width: 80%;
+  margin: 32px 0;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.subscriptions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 900px;
+}
+
+@media (max-width: 768px) {
+  .subscriptions-grid {
+    grid-template-columns: 1fr;
+  }
+}

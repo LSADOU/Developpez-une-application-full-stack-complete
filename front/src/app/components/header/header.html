@@ -1,4 +1,18 @@
-<img src="assets/logo_p6.png" alt="description">
-<div *ngIf="isAuthenticated">
-<button (click)="toLogout()">Se déconnecter...</button><button routerLink="/posts">Articles</button><button routerLink="/topics">Thèmes</button> <button routerLink="/profile">Page personnelle</button>
+<nav class="header" *ngIf="!isHomePage || isAuthenticated">
+  <img class="header__logo" src="assets/logo_p6.png" alt="Logo MDD" *ngIf="showLogo">
+  <div class="header__nav-desktop" *ngIf="isAuthenticated">
+    <button mat-button style="color: var(--red-mdd); font-weight: bold" (click)="toLogout()">Se déconnecter</button>
+    <button mat-button style="color: var(--violet-mdd)" routerLink="/posts">Articles</button>
+    <button mat-button style="color: #000" routerLink="/topics">Thèmes</button>
+    <button mat-icon-button routerLink="/profile"><mat-icon>account_circle</mat-icon></button>
+  </div>
+  <button mat-icon-button class="header__hamburger" *ngIf="isAuthenticated" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</nav>
+<div class="header__mobile-menu" *ngIf="menuOpen && isAuthenticated">
+  <button mat-button style="color: var(--red-mdd); font-weight: bold" (click)="toLogout()">Se déconnecter</button>
+  <button mat-button style="color: var(--violet-mdd)" routerLink="/posts">Articles</button>
+  <button mat-button style="color: #000" routerLink="/topics">Thèmes</button>
+  <button mat-button routerLink="/profile">Profil</button>
 </div>

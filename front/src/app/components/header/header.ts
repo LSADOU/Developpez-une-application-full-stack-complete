@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/services/auth';
 })
 export class Header {
 
+  menuOpen: boolean = false;
+
   constructor(private authService: AuthService, private router: Router){}
 
   get isAuthenticated(): boolean{
@@ -19,4 +21,17 @@ export class Header {
     this.authService.logout();
     this.router.navigate(['/login'])
   }
+
+  toggleMenu(){
+    this.menuOpen = ! this.menuOpen;
+  }
+
+  get isHomePage(): boolean {
+    return this.router.url === '/';
+  }
+
+  get showLogo(): boolean {
+    return this.isAuthenticated || !this.isHomePage;
+  }
+
 }

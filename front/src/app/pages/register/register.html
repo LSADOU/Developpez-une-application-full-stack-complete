@@ -1,17 +1,22 @@
-<h1>Créer un compte</h1>
-<button routerLink="/">&larr;</button> 
+<button class="back-btn" mat-icon-button routerLink="/">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<h1 class="page-title">Inscription</h1>
 <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
   <mat-form-field appearance="outline">
-    <mat-label>Nom d'utilisateur</mat-label><input matInput formControlName="username">
+    <mat-label>Nom d'utilisateur</mat-label>
+    <input matInput formControlName="username">
     <mat-error *ngIf="registerForm.get('username')?.hasError('required')">Champs requis</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Email</mat-label><input matInput formControlName="email">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email">
     <mat-error *ngIf="registerForm.get('email')?.hasError('required')">Champs requis</mat-error>
     <mat-error *ngIf="registerForm.get('email')?.hasError('email')">Adresse email invalide</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Mot de passe</mat-label><input matInput type="password" formControlName="password">
+    <mat-label>Mot de passe</mat-label>
+    <input matInput type="password" formControlName="password">
     <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Champs requis</mat-error>
     <mat-error *ngIf="registerForm.get('password')?.hasError('tooShort')">mot de passe trop court, 8 caractères minimum</mat-error>
     <mat-error *ngIf="registerForm.get('password')?.hasError('missingUpper')">mot de passe invalide car majuscule manquante</mat-error>
@@ -19,5 +24,5 @@
     <mat-error *ngIf="registerForm.get('password')?.hasError('missingNumber')">mot de passe invalide car chiffre manquant</mat-error>
     <mat-error *ngIf="registerForm.get('password')?.hasError('missingSpecial')">mot de passe invalide car caractère spécial manquant</mat-error>
   </mat-form-field>
-  <button mat-raised-button type="submit" [disabled]="registerForm.invalid">Envoyer</button>
+  <button mat-raised-button class="btn-primary" type="submit" [disabled]="registerForm.invalid">S'inscrire</button>
 </form>

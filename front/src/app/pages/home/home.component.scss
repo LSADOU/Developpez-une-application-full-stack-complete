@@ -1,7 +1,24 @@
-.center {
+.home {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  gap: 32px;
+}
+
+.home__logo {
+  width: 450px;
+}
+
+.home__buttons {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .home__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
 }

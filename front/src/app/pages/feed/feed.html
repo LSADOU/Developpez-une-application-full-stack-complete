@@ -1,3 +1,7 @@
-<h1>Articles pour les thèmes souscrits</h1>
-<button routerLink="/posts/create">Créer un article</button> <button (click)="onSortList()">&darr;</button>
-<app-post-tile *ngFor="let post of posts" [post]="post"></app-post-tile>
+<div class="feed-header">
+  <button class="btn-primary" routerLink="/posts/create">Créer un article</button>
+  <button mat-button (click)="onSortList()">Trier par ↓</button>
+</div>
+<div class="grid-2">
+  <app-post-tile *ngFor="let post of posts" [post]="post"></app-post-tile>
+</div>

@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  padding: 24px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.post-meta {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid #000;
+  width: 80%;
+  margin: 24px auto;
+}
+
+.comment-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.comment-input {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  :host {
+    padding: 16px;
+  }
+
+  .post-meta {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .post-meta__theme {
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+
+.post-tile {
+  background: var(--gray-mdd);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+h3 {
+  font-weight: bold;
+  margin: 0 0 8px;
+}
+
+.post-tile__meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.post-tile__content {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}

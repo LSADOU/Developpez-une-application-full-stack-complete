@@ -1,10 +1,8 @@
-<h1>Créer un article</h1>
-
-<form [formGroup]="postForm" (ngSubmit)="onCreatePost()">
-  <mat-form-field appearance="outline">
-    <mat-label>Titre de l'article</mat-label><input matInput formControlName="title">
-    <mat-error *ngIf="postForm.get('title')?.hasError('required')">Champs requis</mat-error>
-  </mat-form-field>
+<div class="page-header">
+  <button mat-icon-button routerLink="/posts"><mat-icon>arrow_back</mat-icon></button>
+  <h1>Créer un article</h1>
+</div>
+<form class="centered-form form-violet" [formGroup]="postForm" (ngSubmit)="onCreatePost()">
   <mat-form-field appearance="outline">
     <mat-label>Thème</mat-label>
     <mat-select formControlName="topicId">
@@ -13,8 +11,14 @@
     <mat-error *ngIf="postForm.get('topicId')?.hasError('required')">Champs requis</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Contenu</mat-label><textarea matInput formControlName="content"></textarea>
+    <mat-label>Titre de l'article</mat-label>
+    <input matInput formControlName="title">
+    <mat-error *ngIf="postForm.get('title')?.hasError('required')">Champs requis</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Contenu</mat-label>
+    <textarea matInput formControlName="content" rows="6"></textarea>
     <mat-error *ngIf="postForm.get('content')?.hasError('required')">Champs requis</mat-error>
   </mat-form-field>
-  <button mat-raised-button type="submit" [disabled]="postForm.invalid">Créer l'article</button>
+  <button mat-raised-button class="btn-primary" type="submit" [disabled]="postForm.invalid">Créer</button>
 </form>
