@@ -34,7 +34,6 @@ public class UserSecurityService implements UserDetailsService{
             User existingUser = foundUser.get();
             return org.springframework.security.core.userdetails.User.withUsername(existingUser.getEmail()).password(existingUser.getPassword()).roles("USER").build();
         }
-        
     }
 
 }
