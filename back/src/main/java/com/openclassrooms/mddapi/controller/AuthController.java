@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.openclassrooms.mddapi.dto.request.LoginRequest;
 import com.openclassrooms.mddapi.dto.request.RegisterRequest;
 import com.openclassrooms.mddapi.dto.request.UpdateUserRequest;
+import com.openclassrooms.mddapi.dto.response.AuthResponse;
 import com.openclassrooms.mddapi.dto.response.UserResponse;
 import com.openclassrooms.mddapi.service.AuthService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,12 +30,12 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody RegisterRequest rr) {
+    public AuthResponse register(@RequestBody RegisterRequest rr) {
         return this.authService.register(rr);
     }
     
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest lr) {
+    public AuthResponse login(@RequestBody LoginRequest lr) {
         return this.authService.login(lr);
     }
     

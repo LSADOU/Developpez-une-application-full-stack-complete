@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.openclassrooms.mddapi.dto.request.LoginRequest;
 import com.openclassrooms.mddapi.dto.request.RegisterRequest;
 import com.openclassrooms.mddapi.dto.request.UpdateUserRequest;
+import com.openclassrooms.mddapi.dto.response.AuthResponse;
 import com.openclassrooms.mddapi.dto.response.UserResponse;
 import com.openclassrooms.mddapi.entity.User;
 import com.openclassrooms.mddapi.repository.UserRepository;
@@ -30,7 +31,7 @@ public class AuthService {
         this.authenticationManager = am;
     }
 
-    public String register(RegisterRequest rr){
+    public AuthResponse register(RegisterRequest rr){
         Optional<User> foundUser = this.userRepository.findByEmail(rr.getEmail());
         if(foundUser.isPresent()){
             throw new RuntimeException("Email déjà utilisé");
@@ -40,18 +41,22 @@ public class AuthService {
             userToRegister.setPassword(this.passwordEncoder.encode(rr.getPassword()));
             userToRegister.setUsername(rr.getUsername());
             this.userRepository.save(userToRegister);
-            return this.jwtUtils.generateToken(rr.getEmail());
+            AuthResponse authResponse = new AuthResponse();
+            authResponse.setToken(this.jwtUtils.generateToken(rr.getEmail()));
+            return authResponse;
         }
     }
 
-    public String login(LoginRequest lr){
+    public AuthResponse login(LoginRequest lr){
         Optional<User> foundUser = this.userRepository.findByEmail(lr.getIdentifier());
         if(! foundUser.isPresent()){
             foundUser = this.userRepository.findByUsername(lr.getIdentifier());
         }
         if(foundUser.isPresent()){   
             this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(foundUser.get().getEmail(), lr.getPassword()));
-            return this.jwtUtils.generateToken(foundUser.get().getEmail());
+            AuthResponse authResponse = new AuthResponse();
+            authResponse.setToken(this.jwtUtils.generateToken(foundUser.get().getEmail()));
+            return authResponse;
         }else{
             throw new RuntimeException("Echec de l'authentification");
         }
