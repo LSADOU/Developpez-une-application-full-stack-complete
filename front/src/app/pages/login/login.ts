@@ -29,6 +29,7 @@ export class Login {
         },
         error: (err: HttpErrorResponse) => {
           console.error(err.error.message);
+          this.errorAuth = "Erreur lors de l'authentification";
         }
       }
     )
