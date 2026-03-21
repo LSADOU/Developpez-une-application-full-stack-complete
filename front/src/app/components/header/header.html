@@ -13,6 +13,7 @@
 <div class="header__backdrop" *ngIf="menuOpen && isAuthenticated" (click)="toggleMenu()"></div>
 <div class="header__mobile-menu" *ngIf="menuOpen && isAuthenticated">
   <div class="header__mobile-menu__nav">
+    <button mat-button style="color: var(--red-mdd); font-weight: bold" (click)="toLogout()">Se déconnecter</button>
     <button mat-button routerLink="/posts" (click)="toggleMenu()">Articles</button>
     <button mat-button routerLink="/topics" (click)="toggleMenu()">Thèmes</button>
   </div>
@@ -20,6 +21,5 @@
     <button mat-button routerLink="/profile" (click)="toggleMenu()">
       <mat-icon>account_circle</mat-icon> Profil
     </button>
-    <button mat-button style="color: var(--red-mdd); font-weight: bold" (click)="toLogout()">Se déconnecter</button>
   </div>
 </div>

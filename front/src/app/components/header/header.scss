@@ -60,6 +60,7 @@
     padding: 24px 16px;
     z-index: 100;
     box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
   }
 
   .header__mobile-menu__nav {
