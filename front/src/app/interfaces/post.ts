@@ -5,6 +5,6 @@ export interface Post {
     authorId: number;
     authorName: string;
     topicId: number;
-    topicName: string;
+    topicTitle: string;
     createdAt: string;
 }
