@@ -10,9 +10,16 @@
     <mat-icon>menu</mat-icon>
   </button>
 </nav>
+<div class="header__backdrop" *ngIf="menuOpen && isAuthenticated" (click)="toggleMenu()"></div>
 <div class="header__mobile-menu" *ngIf="menuOpen && isAuthenticated">
-  <button mat-button style="color: var(--red-mdd); font-weight: bold" (click)="toLogout()">Se déconnecter</button>
-  <button mat-button style="color: var(--violet-mdd)" routerLink="/posts">Articles</button>
-  <button mat-button style="color: #000" routerLink="/topics">Thèmes</button>
-  <button mat-button routerLink="/profile">Profil</button>
+  <div class="header__mobile-menu__nav">
+    <button mat-button routerLink="/posts" (click)="toggleMenu()">Articles</button>
+    <button mat-button routerLink="/topics" (click)="toggleMenu()">Thèmes</button>
+  </div>
+  <div class="header__mobile-menu__actions">
+    <button mat-button routerLink="/profile" (click)="toggleMenu()">
+      <mat-icon>account_circle</mat-icon> Profil
+    </button>
+    <button mat-button style="color: var(--red-mdd); font-weight: bold" (click)="toLogout()">Se déconnecter</button>
+  </div>
 </div>

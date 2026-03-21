@@ -25,7 +25,11 @@ export class AuthService {
   }
 
   updateProfile(email: string, password: string, username: string): Observable<User>{
-    return this.http.put<User>(this.apiUrl+'api/auth/me', {email, password, username});
+    const body: any = {};
+    if (email) body.email = email;
+    if (password) body.password = password;
+    if (username) body.username = username;
+    return this.http.put<User>(this.apiUrl+'api/auth/me', body);
   }
 
   logout(){
