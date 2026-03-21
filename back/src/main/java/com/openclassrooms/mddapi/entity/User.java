@@ -1,6 +1,7 @@
 package com.openclassrooms.mddapi.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -44,6 +45,6 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "topic_id")
     )
-    private List<Topic> suscribedTopics;
+    private List<Topic> suscribedTopics = new ArrayList<>();
 
 }
