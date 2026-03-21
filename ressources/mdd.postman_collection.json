@@ -1,0 +1,350 @@
+{
+  "info": {
+    "_postman_id": "8013ac80-51f3-4a1d-8cbd-35f0e1fb77d1",
+    "name": "mdd",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48945140",
+    "_collection_link": "https://go.postman.co/collection/48945140-8013ac80-51f3-4a1d-8cbd-35f0e1fb77d1?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "username",
+              "value": "lolo31",
+              "type": "text",
+              "uuid": "9a73d25f-7dd3-4147-944d-c8a3d553ab4b"
+            },
+            {
+              "key": "email",
+              "value": "loic@test.com",
+              "type": "text",
+              "uuid": "adb301c5-32da-41cc-8074-442658918c8c"
+            },
+            {
+              "key": "password",
+              "value": "test123",
+              "type": "text",
+              "uuid": "25bbff84-a2c7-4e32-8922-66d0d53527ab"
+            }
+          ]
+        },
+        "url": {
+          "raw": "localhost:8080/api/auth/register",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"loic@test.com\",\n    \"password\": \"test123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/auth/login",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "me",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "me (update)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2ljQHRlc3QuY29tIiwiaWF0IjoxNzc0MDU1MjU4LCJleHAiOjE3NzQxNDE2NTh9.xw7C6Ya0n6XSE-Z41QNeSsKIUNUT8ghHDAzZmNTGvIg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"lolo31000\",\n    \"password\": \"test123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/auth/me",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "auth",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "topics",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "subscriptions",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "suscribe to topic",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/subscriptions/:topicId",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "subscriptions",
+            ":topicId"
+          ],
+          "variable": [
+            {
+              "key": "topicId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "unsuscribe to topic",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/subscriptions/:topicId",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "subscriptions",
+            ":topicId"
+          ],
+          "variable": [
+            {
+              "key": "topicId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get feed",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/posts",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create a post",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"titre du premier post\",\n    \"content\": \"lorem ipsum super original\",\n    \"topicId\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/posts",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get a post",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/posts/:postId",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "posts",
+            ":postId"
+          ],
+          "variable": [
+            {
+              "key": "postId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get the comments in a post",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "create a comment",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"titre du premier post\",\n    \"content\": \"lorem ipsum super original\",\n    \"topicId\": 1\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/posts/:postId/comments",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "posts",
+            ":postId",
+            "comments"
+          ],
+          "variable": [
+            {
+              "key": "postId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2ljQHRlc3QuY29tIiwiaWF0IjoxNzc0MDU1MjU4LCJleHAiOjE3NzQxNDE2NTh9.xw7C6Ya0n6XSE-Z41QNeSsKIUNUT8ghHDAzZmNTGvIg",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    }
+  ]
+}
