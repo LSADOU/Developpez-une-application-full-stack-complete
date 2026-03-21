@@ -3,6 +3,7 @@ package com.openclassrooms.mddapi.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.openclassrooms.mddapi.dto.response.MessageResponse;
 import com.openclassrooms.mddapi.dto.response.TopicResponse;
 import com.openclassrooms.mddapi.service.SubscriptionService;
 
@@ -33,12 +34,12 @@ public class SubscriptionController {
     }
     
     @PostMapping("/{topicId}")
-    public String suscribe(@AuthenticationPrincipal UserDetails ud, @PathVariable Long topicId) {
+    public MessageResponse suscribe(@AuthenticationPrincipal UserDetails ud, @PathVariable Long topicId) {
         return this.subscriptionService.suscribe(ud.getUsername(), topicId);
     }
     
     @DeleteMapping("/{topicId}")
-    public String unsuscribe(@AuthenticationPrincipal UserDetails ud, @PathVariable Long topicId) {
+    public MessageResponse unsuscribe(@AuthenticationPrincipal UserDetails ud, @PathVariable Long topicId) {
         return this.subscriptionService.unsuscribe(ud.getUsername(), topicId);
     }
 

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.openclassrooms.mddapi.dto.response.MessageResponse;
 import com.openclassrooms.mddapi.dto.response.TopicResponse;
 import com.openclassrooms.mddapi.entity.Topic;
 import com.openclassrooms.mddapi.entity.User;
@@ -38,14 +39,16 @@ public class SubscriptionService {
         }
     }
 
-    public String suscribe(String email, Long topicId){
+    public MessageResponse suscribe(String email, Long topicId){
         Optional<User> foundUser = this.userRepository.findByEmail(email);
         if(foundUser.isPresent()){
             Optional<Topic> foundTopic = this.topicRepository.findById(topicId);
             if(foundTopic.isPresent()){
                 foundUser.get().getSuscribedTopics().add(foundTopic.get());
                 this.userRepository.save(foundUser.get());
-                return "Utilisateur "+foundUser.get().getUsername()+" bien abonné au thème "+ foundTopic.get().getTitle();
+                MessageResponse messageResponse = new MessageResponse();
+                messageResponse.setMessage("Utilisateur "+foundUser.get().getUsername()+" bien abonné au thème "+ foundTopic.get().getTitle());
+                return messageResponse;
             }else{
                 throw new RuntimeException("Thème "+topicId+" non trouvé lors de l'abonnements");
             }
@@ -54,14 +57,16 @@ public class SubscriptionService {
         }
     }
 
-    public String unsuscribe(String email, Long topicId){
+    public MessageResponse unsuscribe(String email, Long topicId){
         Optional<User> foundUser = this.userRepository.findByEmail(email);
         if(foundUser.isPresent()){
             Optional<Topic> foundTopic = this.topicRepository.findById(topicId);
             if(foundTopic.isPresent()){
                 foundUser.get().getSuscribedTopics().remove(foundTopic.get());
                 this.userRepository.save(foundUser.get());
-                return "Utilisateur "+foundUser.get().getUsername()+" bien désabonné au thème "+ foundTopic.get().getTitle();
+                MessageResponse messageResponse = new MessageResponse();
+                messageResponse.setMessage("Utilisateur "+foundUser.get().getUsername()+" bien désabonné au thème "+ foundTopic.get().getTitle());
+                return messageResponse;
             }else{
                 throw new RuntimeException("Thème "+topicId+" non trouvé lors de l'abonnements");
             }
