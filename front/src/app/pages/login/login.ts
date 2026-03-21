@@ -16,6 +16,8 @@ export class Login {
     password: new FormControl('', [Validators.required])
   })
 
+  errorAuth : string | null = null;
+
   constructor(private authService: AuthService, private router: Router){}
 
   onLogin(){
