@@ -1,0 +1,7 @@
+<div class="feed-header">
+  <button class="btn-primary" routerLink="/posts/create">Créer un article</button>
+  <button mat-button (click)="onSortList()">Trier {{ sortAsc ? '↑' : '↓' }}</button>
+</div>
+<div class="grid-2">
+  <app-post-tile *ngFor="let post of posts" [post]="post"></app-post-tile>
+</div>

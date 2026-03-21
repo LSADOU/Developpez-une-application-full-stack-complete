@@ -1,0 +1,24 @@
+<button mat-icon-button routerLink="/posts"><mat-icon>arrow_back</mat-icon></button>
+<ng-container *ngIf="post">
+  <h1>{{ post.title }}</h1>
+  <div class="post-meta">
+    <span>{{ post.createdAt }}</span>
+    <span>{{ post.authorName }}</span>
+    <span class="post-meta__theme">{{ post.topicTitle }}</span>
+  </div>
+  <p class="post-content">{{ post.content }}</p>
+
+  <hr class="separator">
+
+  <h2>Commentaires</h2>
+  <app-comment-tile *ngFor="let comment of comments" [comment]="comment"></app-comment-tile>
+
+  <div class="comment-form">
+    <mat-form-field appearance="outline" class="comment-input">
+      <input matInput [formControl]="newComment" placeholder="Écrivez votre commentaire...">
+    </mat-form-field>
+    <button mat-icon-button (click)="onComment()" [disabled]="newComment.invalid">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</ng-container>

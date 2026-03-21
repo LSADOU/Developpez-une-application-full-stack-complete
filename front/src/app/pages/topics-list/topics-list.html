@@ -1,0 +1,4 @@
+<h1 class="page-title">Thèmes</h1>
+<div class="grid-2">
+  <app-topic-tile *ngFor="let topic of allTopics" [topic]="topic" [isUserSubscribed]="isSubscribed(topic.id)" [canUserUnsubscribe]="false"></app-topic-tile>
+</div>

@@ -1,0 +1,885 @@
+{
+  "uuid": "5c8c9bbe-fcca-483f-84de-2d28ef3afdf7",
+  "lastMigration": 33,
+  "name": "Mdd",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [
+    {
+      "uuid": "86905e33-1542-4235-9fb0-212953fe043e",
+      "name": "auth",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "223790b7-f994-466a-ac8c-b4b6446f92f3"
+        },
+        {
+          "type": "route",
+          "uuid": "da6920dd-2669-43d1-9e27-59052c986cdd"
+        },
+        {
+          "type": "route",
+          "uuid": "6af0d517-accb-4765-a9e7-eff07d4c1b2d"
+        },
+        {
+          "type": "route",
+          "uuid": "cd89ce0d-4549-427d-af21-020adced6747"
+        }
+      ]
+    },
+    {
+      "uuid": "86815216-e948-41bc-becb-588ad602eca5",
+      "name": "posts",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "7533d2e8-cca9-4416-85d5-e33b905d8741"
+        },
+        {
+          "type": "route",
+          "uuid": "87e73d7e-2412-4ff3-924f-0a539e1d6451"
+        },
+        {
+          "type": "route",
+          "uuid": "22d3ea6d-3b2a-449c-9b5f-b2cfd1323454"
+        }
+      ]
+    },
+    {
+      "uuid": "96950872-c047-4944-9cad-064fbc5b2b90",
+      "name": "topics",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "9cfb0cbf-c7a5-452c-bccc-9f0eeec0693b"
+        }
+      ]
+    },
+    {
+      "uuid": "44702ed2-437d-471d-96cf-79213f952b27",
+      "name": "comments",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "9cdaa45e-fedf-419a-b232-abb06496f948"
+        },
+        {
+          "type": "route",
+          "uuid": "6ae602bc-8e08-4772-9f73-a0ec5aa3465d"
+        }
+      ]
+    },
+    {
+      "uuid": "d1c4a1f0-c0dd-446f-8238-8b6b34d47c13",
+      "name": "subscriptions",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "f3fa7bad-62f7-4f09-8e60-bae6ec13bb93"
+        },
+        {
+          "type": "route",
+          "uuid": "e49adf38-f44d-4681-9628-4f7fa0ff6582"
+        },
+        {
+          "type": "route",
+          "uuid": "9d9a6fb5-144e-48f2-8185-24e8f78cd1b6"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "223790b7-f994-466a-ac8c-b4b6446f92f3",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "api/auth/register",
+      "responses": [
+        {
+          "uuid": "8cd073c5-4f38-4ade-94b0-f127ff1c1427",
+          "body": "{\n  \"token\": \"mock-jwt-token-12345\"                                                                                                                                                                                                \n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "fe383ee8-088c-4d72-a1b3-662a7c8a23f0",
+          "body": "{\n  \"message\": \"Email or username already exists\"\n}",
+          "latency": 0,
+          "statusCode": 409,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "exist@mail.com",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "da6920dd-2669-43d1-9e27-59052c986cdd",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "api/auth/login",
+      "responses": [
+        {
+          "uuid": "902d354d-93fd-4976-ad7a-5c19a9c747ba",
+          "body": "{\n  \"token\": \"mock-jwt-token-12345\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "identifier",
+              "value": "loic@test.com",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "test123",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "c765056b-b120-45a0-ba40-93e44917a0b2",
+          "body": "{\n  \"message\": \"Invalid credentials\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "6af0d517-accb-4765-a9e7-eff07d4c1b2d",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/auth/me",
+      "responses": [
+        {
+          "uuid": "860a180a-b7ce-42f6-bf92-39794d2e7069",
+          "body": "{\n  \"id\": 1,\n  \"username\": \"loic\",\n  \"email\": \"loic@test.com\",\n  \"createdAt\": \"2024-01-15T10:30:00\",\n  \"updatedAt\": \"2024-01-15T10:30:00\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "058a7d9f-29b2-4e55-bbc9-f47e463ad96c",
+          "body": "{\n  \"message\": \"Unauthorized\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "cd89ce0d-4549-427d-af21-020adced6747",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "api/auth/me",
+      "responses": [
+        {
+          "uuid": "6efba453-1937-4814-a364-c531eab96e45",
+          "body": "{\n  \"id\": 1,\n  \"username\": \"johndoe\",\n  \"email\": \"john@example.com\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "440e0c56-0093-4d70-a51c-249d8dfefb87",
+          "body": "{\n  \"message\": \"Unauthorized\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "9cfb0cbf-c7a5-452c-bccc-9f0eeec0693b",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/topics",
+      "responses": [
+        {
+          "uuid": "c52d6db6-97ca-4ced-a6d1-bf0f5d4afadc",
+          "body": "[\n  {\n    \"id\": 1,\n    \"title\": \"JavaScript\",\n    \"description\": \"Langage de programmation web coté client et serveur\"\n  },\n  {\n    \"id\": 2,\n    \"title\": \"Java\",\n    \"description\": \"Langage oriente objet utilisé pour le développement backend\"\n  },\n  {\n    \"id\": 3,\n    \"title\": \"Angular\",\n    \"description\": \"Framework frontend developpé par Google\"\n  },\n  {\n    \"id\": 4,\n    \"title\": \"Spring Boot\",\n    \"description\": \"Framework backend Java pour creer des API REST\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "31b53528-0285-4e7b-90bb-ac5753246848",
+          "body": "{\n  \"message\": \"Unauthorized\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "f3fa7bad-62f7-4f09-8e60-bae6ec13bb93",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/subscriptions",
+      "responses": [
+        {
+          "uuid": "d97adcf2-af26-4dff-90f7-121d9dda6839",
+          "body": "[\n  {\n    \"id\": 1,\n    \"title\": \"JavaScript\",\n    \"description\": \"Langage de programmation web coté client et serveur\"\n  },\n  {\n    \"id\": 3,\n    \"title\": \"Angular\",\n    \"description\": \"Framework frontend developpé par Google\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "e49adf38-f44d-4681-9628-4f7fa0ff6582",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "api/subscriptions/:topicid",
+      "responses": [
+        {
+          "uuid": "5b6d0994-966c-4305-ae63-a7b597f927cf",
+          "body": "{\n  \"message\": \"Subscribed successfully\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "9d9a6fb5-144e-48f2-8185-24e8f78cd1b6",
+      "type": "http",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "api/subscriptions/:topicid",
+      "responses": [
+        {
+          "uuid": "029e42ed-e332-458e-8452-faa2a8fb2539",
+          "body": "{\n  \"message\": \"Unsubscribed successfully\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "7533d2e8-cca9-4416-85d5-e33b905d8741",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "api/posts",
+      "responses": [
+        {
+          "uuid": "74b5e7c8-b9a5-4031-8dd5-f9d6a1faf01b",
+          "body": "{\n  \"id\": 3,\n  \"title\": \"Nouvel article\",\n  \"content\": \"Contenu de l'article\",\n  \"authorId\": 1,\n  \"authorName\": \"johndoe\",\n  \"topicId\": 1,\n  \"topicName\": \"JavaScript\",\n  \"createdAt\": \"2024-03-12T16:00:00\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "90d8862d-0e1f-4662-a9f4-6214f6a52d76",
+          "body": "{\n  \"message\": \"Title and content are required\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "87e73d7e-2412-4ff3-924f-0a539e1d6451",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/posts",
+      "responses": [
+        {
+          "uuid": "12707f93-a4ac-445c-8716-ec9e1c0f31e4",
+          "body": "[\n  {\n    \"id\": 1,\n    \"title\": \"Les nouveautes ES2024\",\n    \"content\": \"JavaScript continue d'evoluer avec de nouvelles fonctionnalites...\",\n    \"authorId\": 1,\n    \"authorName\": \"johndoe\",\n    \"topicId\": 1,\n    \"topicName\": \"JavaScript\",\n    \"createdAt\": \"2024-03-10T14:30:00\"\n  },\n  {\n    \"id\": 2,\n    \"title\": \"Comprendre les composants Angular\",\n    \"content\": \"Les composants sont la brique de base d'une application Angular...\",\n    \"authorId\": 2,\n    \"authorName\": \"janedoe\",\n    \"topicId\": 3,\n    \"topicName\": \"Angular\",\n    \"createdAt\": \"2024-03-08T09:15:00\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "22d3ea6d-3b2a-449c-9b5f-b2cfd1323454",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/posts/:id",
+      "responses": [
+        {
+          "uuid": "208ee76d-95c8-4fd3-9b1e-307c6fc64d28",
+          "body": "{\n  \"id\": 1,\n  \"title\": \"Les nouveautes ES2024\",\n  \"content\": \"JavaScript continue d'evoluer avec de nouvelles fonctionnalites. Parmi les ajouts les plus notables, on retrouve les methodes groupBy, les expressions regulieres ameliorees et de nouvelles API pour la gestion des dates. \",\n  \"authorId\": 1,\n  \"authorName\": \"johndoe\",\n  \"topicId\": 1,\n  \"topicName\": \"JavaScript\",\n  \"createdAt\": \"2024-03-10T14:30:00\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "1",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "845aa683-2f72-43d4-8ce8-4e54da05eaa9",
+          "body": "{\n  \"id\": 2,\n  \"title\": \"Comprendre les composants Angular\",\n  \"content\": \"Les composants sont la brique de base d'une application Angular...\",\n  \"authorId\": 2,\n  \"authorName\": \"janedoe\",\n  \"topicId\": 3,\n  \"topicName\": \"Angular\",\n  \"createdAt\": \"2024-03-08T09:15:00\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "2",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "3e17d933-e46e-4801-8779-ee56f086d0cb",
+          "body": "{\n  \"message\": \"Post not found\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "9cdaa45e-fedf-419a-b232-abb06496f948",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/posts/:id/comments",
+      "responses": [
+        {
+          "uuid": "01b09231-2f1d-4f0a-aa42-ac6c4e9364a9",
+          "body": "[\n  {\n    \"id\": 1,\n    \"content\": \"Super article, merci pour le partage !\",\n    \"authorId\": 2,\n    \"authorName\": \"janedoe\",\n    \"createdAt\": \"2024-03-10T16:45:00\"\n  },\n  {\n    \"id\": 2,\n    \"content\": \"Tres interessant, j'ai appris des choses.\",\n    \"authorId\": 1,\n    \"authorName\": \"johndoe\",\n    \"createdAt\": \"2024-03-11T09:20:00\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "6ae602bc-8e08-4772-9f73-a0ec5aa3465d",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "api/posts/:id/comments",
+      "responses": [
+        {
+          "uuid": "78ada609-53d1-4de4-b327-e9c81d897bc7",
+          "body": "{\n  \"id\": 3,\n  \"content\": \"Nouveau commentaire\",\n  \"authorId\": 1,\n  \"authorName\": \"johndoe\",\n  \"createdAt\": \"2024-03-12T10:00:00\"\n}\n",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "fe75bd4e-da67-4900-bd22-3ce598df524f",
+          "body": "{\n  \"message\": \"Content is required\"\n}\n",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "86905e33-1542-4235-9fb0-212953fe043e"
+    },
+    {
+      "type": "folder",
+      "uuid": "86815216-e948-41bc-becb-588ad602eca5"
+    },
+    {
+      "type": "folder",
+      "uuid": "96950872-c047-4944-9cad-064fbc5b2b90"
+    },
+    {
+      "type": "folder",
+      "uuid": "44702ed2-437d-471d-96cf-79213f952b27"
+    },
+    {
+      "type": "folder",
+      "uuid": "d1c4a1f0-c0dd-446f-8238-8b6b34d47c13"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}

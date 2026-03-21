@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.comment__author {
+  min-width: 120px;
+  font-weight: 500;
+  padding-top: 8px;
+}
+
+.comment__content {
+  flex: 1;
+  background: var(--gray-mdd);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+@media (max-width: 768px) {
+  .comment {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .comment__author {
+    align-self: flex-end;
+    min-width: auto;
+    padding-top: 0;
+  }
+}

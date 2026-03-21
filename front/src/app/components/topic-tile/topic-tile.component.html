@@ -1,0 +1,5 @@
+<h2>{{ topic.title }}</h2>
+<p>{{ topic.description }}</p>
+<button class="btn-primary" *ngIf="!isUserSubscribed" (click)="manageSubscription()">S'abonner</button>
+<button class="btn-unsubscribe" *ngIf="isUserSubscribed && canUserUnsubscribe" (click)="manageSubscription()">Se désabonner</button>
+<button class="btn-already-subscribed" *ngIf="isUserSubscribed && !canUserUnsubscribe" disabled>Déjà abonné</button>

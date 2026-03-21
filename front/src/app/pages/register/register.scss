@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  padding: 24px 16px;
+}
+
+.back-btn {
+  display: block;
+}
+
+.page-title {
+  text-align: center;
+  font-weight: bold;
+  margin: 16px 0 24px;
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+form mat-form-field {
+  width: 100%;
+}
