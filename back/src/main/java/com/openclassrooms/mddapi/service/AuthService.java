@@ -77,7 +77,7 @@ public class AuthService {
     public UserResponse updateUserInfo(String actualUserEmail, UpdateUserRequest uur){
         Optional<User> foundUser = this.userRepository.findByEmail(actualUserEmail);
         if(foundUser.isPresent()){
-            if(uur.getEmail() != null){
+            if(uur.getEmail() != null && !uur.getEmail().equals(actualUserEmail)){
                 Optional<User> foundUserWithNewEmail = this.userRepository.findByEmail(uur.getEmail());
                 if(foundUserWithNewEmail.isPresent()){
                     throw new RuntimeException("nouvelle adresse email déjà utilisé");
