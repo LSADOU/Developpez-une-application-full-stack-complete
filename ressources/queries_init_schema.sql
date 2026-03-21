@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS subscriptions(
 
 CREATE TABLE IF NOT EXISTS comments(
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id),
+    author_id BIGINT NOT NULL,
+    FOREIGN KEY (author_id) REFERENCES users(id),
     post_id BIGINT NOT NULL,
     FOREIGN KEY (post_id) REFERENCES posts(id),
     content TEXT NOT NULL
