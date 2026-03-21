@@ -68,6 +68,8 @@ public class AuthService {
             UserResponse ur = new UserResponse();
             ur.setEmail(foundUser.get().getEmail());
             ur.setUsername(foundUser.get().getUsername());
+            ur.setCreatedAt(foundUser.get().getCreatedAt());
+            ur.setUpdatedAt(foundUser.get().getUpdatedAt());
             return ur;
         }else{
             throw new RuntimeException("Utilisateur non trouvé: "+resquestEmail);
@@ -90,6 +92,8 @@ public class AuthService {
             UserResponse updatedUserDTO = new UserResponse();
             updatedUserDTO.setEmail(foundUser.get().getEmail());
             updatedUserDTO.setUsername(foundUser.get().getUsername());
+            updatedUserDTO.setCreatedAt(foundUser.get().getCreatedAt());
+            updatedUserDTO.setUpdatedAt(foundUser.get().getUpdatedAt());
             return updatedUserDTO;
         }else{
             throw new RuntimeException("Utilisateur non trouvé lors de la mise à jour");

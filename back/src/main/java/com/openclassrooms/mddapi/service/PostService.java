@@ -44,6 +44,7 @@ public class PostService {
                 postResponse.setContent(subscribedPost.getContent());
                 postResponse.setAuthorId(subscribedPost.getAuthor().getId());
                 postResponse.setAuthorName(subscribedPost.getAuthor().getUsername());
+                postResponse.setCreatedAt(subscribedPost.getCreatedAt());
                 return postResponse;
             }).collect(Collectors.toList());
             return feed;
@@ -69,6 +70,7 @@ public class PostService {
                 newPostResponse.setContent(newPost.getContent());
                 newPostResponse.setAuthorId(newPost.getAuthor().getId());
                 newPostResponse.setAuthorName(newPost.getAuthor().getUsername());
+                newPostResponse.setCreatedAt(newPost.getCreatedAt());
                 return newPostResponse;
             }else{
                 throw new RuntimeException("Thème "+pr.getTopicId()+" non trouvé lors de la création du post");
@@ -89,6 +91,7 @@ public class PostService {
             postResponse.setContent(foundPost.get().getContent());
             postResponse.setAuthorId(foundPost.get().getAuthor().getId());
             postResponse.setAuthorName(foundPost.get().getAuthor().getUsername());
+            postResponse.setCreatedAt(foundPost.get().getCreatedAt());
             return postResponse;
         }else{
             throw new RuntimeException("Post "+id+" non trouvé");

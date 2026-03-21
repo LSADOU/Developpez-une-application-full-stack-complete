@@ -1,5 +1,7 @@
 package com.openclassrooms.mddapi.dto.response;
 
+import java.time.LocalDateTime;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,4 +10,6 @@ import lombok.Setter;
 public class UserResponse {
     private String username;
     private String email;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
