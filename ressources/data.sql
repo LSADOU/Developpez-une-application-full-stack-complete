@@ -1,14 +1,14 @@
 
-INSERT INTO users (username, email, password) VALUES ('Thomas', 'thomas@test.com', '$2a$10$VQXPCri26d7WouS5zvHRXuZ4MV1SKwzWljA64ZfttNUIXHMilFBaG');
-INSERT INTO users (username, email, password) VALUES ('Marie', 'marie@test.com', '$2a$10$VQXPCri26d7WouS5zvHRXuZ4MV1SKwzWljA64ZfttNUIXHMilFBaG');
-INSERT INTO users (username, email, password) VALUES ('Lucas', 'lucas@test.com', '$2a$10$VQXPCri26d7WouS5zvHRXuZ4MV1SKwzWljA64ZfttNUIXHMilFBaG');
-INSERT INTO users (username, email, password) VALUES ('Camille', 'camille@test.com', '$2a$10$VQXPCri26d7WouS5zvHRXuZ4MV1SKwzWljA64ZfttNUIXHMilFBaG');
-INSERT INTO users (username, email, password) VALUES ('Antoine', 'antoine@test.com', '$2a$10$VQXPCri26d7WouS5zvHRXuZ4MV1SKwzWljA64ZfttNUIXHMilFBaG');
-INSERT INTO users (username, email, password) VALUES ('Sophie', 'sophie@test.com', '$2a$10$VQXPCri26d7WouS5zvHRXuZ4MV1SKwzWljA64ZfttNUIXHMilFBaG');
-INSERT INTO users (username, email, password) VALUES ('Julien', 'julien@test.com', '$2a$10$VQXPCri26d7WouS5zvHRXuZ4MV1SKwzWljA64ZfttNUIXHMilFBaG');
-INSERT INTO users (username, email, password) VALUES ('Lea', 'lea@test.com', '$2a$10$VQXPCri26d7WouS5zvHRXuZ4MV1SKwzWljA64ZfttNUIXHMilFBaG');
-INSERT INTO users (username, email, password) VALUES ('Nicolas', 'nicolas@test.com', '$2a$10$VQXPCri26d7WouS5zvHRXuZ4MV1SKwzWljA64ZfttNUIXHMilFBaG');
-INSERT INTO users (username, email, password) VALUES ('Emma', 'emma@test.com', '$2a$10$VQXPCri26d7WouS5zvHRXuZ4MV1SKwzWljA64ZfttNUIXHMilFBaG');
+INSERT INTO users (username, email, password) VALUES ('Thomas', 'thomas@test.com', '$2a$10$$2a$10$em0UngmKSZXR5XiQMDKIgOY01wTlVCR4gi2S9nMCXXu2UX3jexs36');
+INSERT INTO users (username, email, password) VALUES ('Marie', 'marie@test.com', '$2a$10$$2a$10$em0UngmKSZXR5XiQMDKIgOY01wTlVCR4gi2S9nMCXXu2UX3jexs36');
+INSERT INTO users (username, email, password) VALUES ('Lucas', 'lucas@test.com', '$2a$10$$2a$10$em0UngmKSZXR5XiQMDKIgOY01wTlVCR4gi2S9nMCXXu2UX3jexs36');
+INSERT INTO users (username, email, password) VALUES ('Camille', 'camille@test.com', '$2a$10$$2a$10$em0UngmKSZXR5XiQMDKIgOY01wTlVCR4gi2S9nMCXXu2UX3jexs36');
+INSERT INTO users (username, email, password) VALUES ('Antoine', 'antoine@test.com', '$2a$10$$2a$10$em0UngmKSZXR5XiQMDKIgOY01wTlVCR4gi2S9nMCXXu2UX3jexs36');
+INSERT INTO users (username, email, password) VALUES ('Sophie', 'sophie@test.com', '$2a$10$$2a$10$em0UngmKSZXR5XiQMDKIgOY01wTlVCR4gi2S9nMCXXu2UX3jexs36');
+INSERT INTO users (username, email, password) VALUES ('Julien', 'julien@test.com', '$2a$10$$2a$10$em0UngmKSZXR5XiQMDKIgOY01wTlVCR4gi2S9nMCXXu2UX3jexs36');
+INSERT INTO users (username, email, password) VALUES ('Lea', 'lea@test.com', '$2a$10$$2a$10$em0UngmKSZXR5XiQMDKIgOY01wTlVCR4gi2S9nMCXXu2UX3jexs36');
+INSERT INTO users (username, email, password) VALUES ('Nicolas', 'nicolas@test.com', '$2a$10$$2a$10$em0UngmKSZXR5XiQMDKIgOY01wTlVCR4gi2S9nMCXXu2UX3jexs36');
+INSERT INTO users (username, email, password) VALUES ('Emma', 'emma@test.com', '$2a$10$$2a$10$em0UngmKSZXR5XiQMDKIgOY01wTlVCR4gi2S9nMCXXu2UX3jexs36');
 
 INSERT INTO topics (title, description) VALUES ('JavaScript', 'Tout sur le langage JavaScript : ES6+, frameworks, bonnes pratiques.');
 INSERT INTO topics (title, description) VALUES ('Java', 'Le langage Java, Spring Boot, JPA et l''ecosysteme JVM.');
