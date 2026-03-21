@@ -13,6 +13,7 @@ export class Feed implements OnInit{
 
   posts: Post[] = [];
   errorMsg: string = "";
+  sortAsc: boolean = false;
 
   constructor(private postService: PostService, private router: Router){}
 
@@ -30,6 +31,12 @@ export class Feed implements OnInit{
     );
   }
 
-  onSortList(){}
+  onSortList(){
+    this.sortAsc = !this.sortAsc;
+    this.posts.sort((a, b) => {
+      const diff = new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+      return this.sortAsc ? diff : -diff;
+    });
+  }
 
 }

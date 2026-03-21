@@ -1,7 +1,7 @@
 <div class="post-tile" (click)="goToPost()">
   <h3>{{ post.title }}</h3>
   <div class="post-tile__meta">
-    <span>{{ post.createdAt }}</span>
+    <span>{{ post.createdAt | date:'dd/MM/yyyy' }}</span>
     <span>{{ post.authorName }}</span>
   </div>
   <p class="post-tile__content">{{ post.content }}</p>
