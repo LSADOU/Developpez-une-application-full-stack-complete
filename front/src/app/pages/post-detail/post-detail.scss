@@ -5,8 +5,15 @@
   margin: 0 auto;
 }
 
-h1 {
-  font-weight: bold;
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  h1 {
+    font-weight: bold;
+    margin: 0;
+  }
 }
 
 .post-meta {
